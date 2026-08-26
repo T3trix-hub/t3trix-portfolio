@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>T3trix — Portfolio</title>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="favicon-180.png" />
+  <link rel="apple-touch-icon" href="favicon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── HERO ─────────────────────────────── */
+    .hero {
+      min-height: calc(100vh - 60px);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; left: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(124,107,255,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(192,132,252,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-label::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-desc {
+      font-size: 1.0625rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 420px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* terminal card */
+    .terminal {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      font-family: var(--font-mono);
+    }
+
+    .terminal-bar {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .terminal-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red   { background: #f87171; }
+    .dot-yel   { background: #facc15; }
+    .dot-grn   { background: #4ade80; }
+
+    .terminal-title {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+    }
+
+    .terminal-body {
+      padding: 1.25rem;
+      font-size: 0.8125rem;
+      line-height: 1.9;
+    }
+
+    .t-prompt { color: var(--accent); }
+    .t-cmd    { color: var(--text); }
+    .t-out    { color: var(--muted); padding-left: 1rem; }
+    .t-key    { color: var(--accent2); }
+    .t-val    { color: var(--green); }
+    .t-cursor {
+      display: inline-block;
+      width: 8px; height: 14px;
+      background: var(--accent);
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ── STATS ────────────────────────────── */
+    .stats {
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── FEATURED PROJECTS ────────────────── */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2.5rem;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .proj-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .proj-card:hover {
+      border-color: rgba(124, 107, 255, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(124, 107, 255, 0.1);
+    }
+
+    .proj-icon {
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+
+    .proj-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .proj-desc {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .proj-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .proj-footer {
+      display: flex;
+      gap: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .proj-link {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: color var(--transition);
+    }
+    .proj-link:hover { color: var(--accent); }
+    .proj-link svg { width: 12px; height: 12px; }
+
+    /* ── STACK ────────────────────────────── */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .stack-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.875rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .stack-icon { font-size: 1.1rem; }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .terminal { display: none; }
+      .featured-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .featured-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">T3<span>trix</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="projects.html">Проекты</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="contact.html">Контакты</a></li>
+  </ul>
+  <div class="nav-burger" role="button" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <p class="hero-label">Full-Stack Developer</p>
+          <h1>Привет,<br>я <span class="gradient-text">Алексей</span></h1>
+          <p class="hero-desc">
+            Строю веб-приложения, Telegram-ботов и интерактивные интерфейсы.
+            Ванильный JS, Python, aiogram — без лишнего шума.
+          </p>
+          <div class="hero-actions">
+            <a href="projects.html" class="btn btn-primary">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+              Посмотреть работы
+            </a>
+            <a href="contact.html" class="btn btn-ghost">Связаться</a>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="terminal-dot dot-red"></div>
+            <div class="terminal-dot dot-yel"></div>
+            <div class="terminal-dot dot-grn"></div>
+            <span class="terminal-title">~/portfolio</span>
+          </div>
+          <div class="terminal-body">
+            <div><span class="t-prompt">❯ </span><span class="t-cmd">whoami</span></div>
+            <div class="t-out">T3trix-hub / Алексей</div>
+            <br>
+            <div><span class="t-prompt">❯ </span><span class="t-cmd">cat stack.json</span></div>
+            <div class="t-out">{</div>
+            <div class="t-out">&nbsp;&nbsp;<span class="t-key">"frontend"</span>: <span class="t-val">"HTML · CSS · Vanilla JS"</span>,</div>
+            <div class="t-out">&nbsp;&nbsp;<span class="t-key">"backend"</span>: <span class="t-val">"Python · FastAPI"</span>,</div>
+            <div class="t-out">&nbsp;&nbsp;<span class="t-key">"bots"</span>: <span class="t-val">"aiogram 3 · Telegram WebApp"</span>,</div>
+            <div class="t-out">&nbsp;&nbsp;<span class="t-key">"db"</span>: <span class="t-val">"SQLite · LocalStorage"</span></div>
+            <div class="t-out">}</div>
+            <br>
+            <div><span class="t-prompt">❯ </span><span class="t-cursor"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item fade-in">
+          <div class="stat-num">7</div>
+          <div class="stat-label">Проектов</div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Языка</div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-num">2</div>
+          <div class="stat-label">TG-бота</div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-num">0</div>
+          <div class="stat-label">Фреймворков*</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED -->
+  <section>
+    <div class="container">
+      <div class="section-header fade-in">
+        <div>
+          <span class="eyebrow">Избранное</span>
+          <h2>Топ проекты</h2>
+        </div>
+        <a href="projects.html" class="btn btn-ghost">Все проекты →</a>
+      </div>
+
+      <div class="featured-grid">
+
+        <a href="projects.html#split" class="proj-card fade-in">
+          <div class="proj-icon">💸</div>
+          <div class="proj-name">Скинулись</div>
+          <div class="proj-desc">Telegram Mini App для сплита расходов с алгоритмом минимизации переводов. FastAPI + aiogram + WebApp SDK.</div>
+          <div class="proj-tags">
+            <span class="tag py">Python</span>
+            <span class="tag api">FastAPI</span>
+            <span class="tag tg">Telegram</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://github.com/T3trix-hub/split" target="_blank" class="proj-link" onclick="event.stopPropagation()">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </a>
+
+        <a href="projects.html#bizcrm" class="proj-card fade-in">
+          <div class="proj-icon">📊</div>
+          <div class="proj-name">BizCRM</div>
+          <div class="proj-desc">CRM для малого бизнеса: Kanban, задачи, аналитика на Canvas. Чистый JS, нулевые зависимости, LocalStorage.</div>
+          <div class="proj-tags">
+            <span class="tag js">JavaScript</span>
+            <span class="tag html">Canvas API</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://github.com/T3trix-hub/bizCRM" target="_blank" class="proj-link" onclick="event.stopPropagation()">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </a>
+
+        <a href="projects.html#bel" class="proj-card fade-in">
+          <div class="proj-icon">🗺️</div>
+          <div class="proj-name">Bel-Interact</div>
+          <div class="proj-desc">Интерактивная SVG-карта Беларуси: 200+ точек, зум, мультитач, 3 языка, тёмная тема. Без библиотек.</div>
+          <div class="proj-tags">
+            <span class="tag js">JavaScript</span>
+            <span class="tag html">SVG</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://github.com/T3trix-hub/Bel-Interact" target="_blank" class="proj-link" onclick="event.stopPropagation()">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK TEASER -->
+  <section style="padding-top:0">
+    <div class="container">
+      <span class="eyebrow fade-in">Инструменты</span>
+      <h2 class="fade-in" style="margin-bottom:1.5rem">Стек</h2>
+      <div class="stack-grid">
+        <div class="stack-item fade-in"><span class="stack-icon">🐍</span> Python</div>
+        <div class="stack-item fade-in"><span class="stack-icon">⚡</span> FastAPI</div>
+        <div class="stack-item fade-in"><span class="stack-icon">🤖</span> aiogram 3</div>
+        <div class="stack-item fade-in"><span class="stack-icon">🟨</span> JavaScript</div>
+        <div class="stack-item fade-in"><span class="stack-icon">🌐</span> HTML / CSS</div>
+        <div class="stack-item fade-in"><span class="stack-icon">🗄️</span> SQLite</div>
+        <div class="stack-item fade-in"><span class="stack-icon">✈️</span> TG WebApp</div>
+        <div class="stack-item fade-in"><span class="stack-icon">🎨</span> Canvas API</div>
+      </div>
+      <p style="margin-top:1rem;font-size:0.75rem;color:var(--muted);font-family:var(--font-mono);">* большинство frontend-проектов без npm</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 T3trix-hub / Алексей</p>
+  <div style="display:flex;gap:1.25rem;">
+    <a href="https://github.com/T3trix-hub" target="_blank">GitHub</a>
+    <a href="contact.html">Контакты</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

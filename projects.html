@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Проекты — T3trix</title>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="favicon-180.png" />
+  <link rel="apple-touch-icon" href="favicon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-hero {
+      padding: 5rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 2.5rem 0;
+    }
+
+    .filter-btn {
+      padding: 0.4rem 1rem;
+      border-radius: 99px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      transition: var(--transition);
+      font-family: var(--font-display);
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* ── FULL PROJECT CARDS ─────────────────── */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .project-row {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 3.5rem 1fr auto;
+      gap: 1.25rem 1.5rem;
+      align-items: start;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .project-row:hover {
+      border-color: rgba(124,107,255,0.4);
+      box-shadow: 0 8px 32px rgba(124,107,255,0.08);
+    }
+
+    .project-emoji {
+      font-size: 2.25rem;
+      line-height: 1;
+      padding-top: 0.1rem;
+    }
+
+    .project-body {}
+
+    .project-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .project-type {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+      max-width: 600px;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .project-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      min-width: 130px;
+    }
+
+    .action-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .action-github {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .action-github:hover { border-color: var(--accent); color: var(--accent); }
+
+    .action-live {
+      background: var(--accent);
+      color: #fff;
+    }
+    .action-live:hover { background: #9580ff; }
+
+    .action-tg {
+      background: #0088cc;
+      color: #fff;
+    }
+    .action-tg:hover { background: #0099dd; }
+
+    .action-icon {
+      width: 14px; height: 14px;
+      flex-shrink: 0;
+    }
+
+    .no-live {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      font-family: var(--font-mono);
+      padding: 0.4rem;
+    }
+
+    @media (max-width: 700px) {
+      .project-row {
+        grid-template-columns: 2.5rem 1fr;
+      }
+      .project-actions {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        min-width: unset;
+      }
+      .action-link { flex: 1; }
+    }
+
+    @media (max-width: 480px) {
+      .project-row { grid-template-columns: 1fr; }
+      .project-emoji { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">T3<span>trix</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="projects.html">Проекты</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="contact.html">Контакты</a></li>
+  </ul>
+  <div class="nav-burger"><span></span><span></span><span></span></div>
+</nav>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Все работы</span>
+      <h1>Проекты</h1>
+      <p style="color:var(--muted);margin-top:0.75rem;max-width:480px;font-size:1.0625rem;line-height:1.7">
+        7 проектов — от Telegram-ботов до интерактивных карт. Всё на ванильном стеке, без лишних зависимостей.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="web">Веб-сайты</button>
+        <button class="filter-btn" data-filter="bot">Telegram-боты</button>
+        <button class="filter-btn" data-filter="app">Приложения</button>
+      </div>
+
+      <div class="projects-list">
+
+        <!-- SPLIT -->
+        <div class="project-row fade-in" id="split" data-type="bot">
+          <div class="project-emoji">💸</div>
+          <div class="project-body">
+            <div class="project-title">
+              Скинулись
+              <span class="project-type">TG Mini App</span>
+            </div>
+            <p class="project-desc">
+              Мини-апп для компании друзей: создаёшь группу (поездка, квартира, вечеринка), добавляешь расходы — бот сам считает кто кому должен и минимизирует число переводов. Жадный алгоритм на балансах, FastAPI-бэкенд, верификация Telegram initData. Готовый прототип — WebApp-интерфейс с aiogram 3.
+            </p>
+            <div class="project-tags">
+              <span class="tag py">Python</span>
+              <span class="tag api">FastAPI</span>
+              <span class="tag tg">aiogram 3</span>
+              <span class="tag tg">TG WebApp</span>
+              <span class="tag">SQLite</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/T3trix-hub/split" target="_blank" class="action-link action-github">
+              <svg class="action-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <p class="no-live">деплой нужен</p>
+          </div>
+        </div>
+
+        <!-- BIZCRM -->
+        <div class="project-row fade-in" id="bizcrm" data-type="app">
+          <div class="project-emoji">📊</div>
+          <div class="project-body">
+            <div class="project-title">
+              BizCRM
+              <span class="project-type">Web App</span>
+            </div>
+            <p class="project-desc">
+              CRM для малого бизнеса: клиенты, сделки в Kanban с drag-and-drop, задачи, календарь, аналитика на Canvas API без Chart.js. Тёмная/светлая тема, RU/EN, адаптив. Весь стейт — LocalStorage. Чистый JS без фреймворков и npm.
+            </p>
+            <div class="project-tags">
+              <span class="tag js">Vanilla JS</span>
+              <span class="tag html">Canvas API</span>
+              <span class="tag html">CSS Grid</span>
+              <span class="tag">LocalStorage</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/T3trix-hub/bizCRM" target="_blank" class="action-link action-github">
+              <svg class="action-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <p class="no-live">нет деплоя</p>
+          </div>
+        </div>
+
+        <!-- BEL-INTERACT -->
+        <div class="project-row fade-in" id="bel" data-type="web">
+          <div class="project-emoji">🗺️</div>
+          <div class="project-body">
+            <div class="project-title">
+              Bel-Interact
+              <span class="project-type">Веб-сайт</span>
+            </div>
+            <p class="project-desc">
+              Интерактивная SVG-карта Беларуси на чистом Vanilla JS — без библиотек. 200+ объектов: города, агроусадьбы, замки, музеи, природа. Зум и панорамирование, мультитач для мобильных, умная фильтрация по масштабу. Три языка (RU / EN / ZH), тёмная тема, GPS + Яндекс.Маршруты.
+            </p>
+            <div class="project-tags">
+              <span class="tag js">Vanilla JS</span>
+              <span class="tag html">SVG</span>
+              <span class="tag html">CSS</span>
+              <span class="tag">i18n</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/T3trix-hub/Bel-Interact" target="_blank" class="action-link action-github">
+              <svg class="action-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <p class="no-live">нет деплоя</p>
+          </div>
+        </div>
+
+        <!-- BARBERSHOP BOT -->
+        <div class="project-row fade-in" id="barbershop" data-type="bot">
+          <div class="project-emoji">✂️</div>
+          <div class="project-body">
+            <div class="project-title">
+              Барбершоп-бот
+              <span class="project-type">TG Bot</span>
+            </div>
+            <p class="project-desc">
+              Telegram-бот для онлайн-записи в барбершоп «Цирюльник Александр». Выбор услуги, мастера, даты и времени. FSM через aiogram 3, SQLite, middleware, кастомные клавиатуры, admin-панель. Полноценная структура продакшен-бота.
+            </p>
+            <div class="project-tags">
+              <span class="tag py">Python</span>
+              <span class="tag tg">aiogram 3</span>
+              <span class="tag tg">FSM</span>
+              <span class="tag">SQLite</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/T3trix-hub/barbershop-bot" target="_blank" class="action-link action-github">
+              <svg class="action-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <p class="no-live">добавь @username</p>
+          </div>
+        </div>
+
+        <!-- GOLDEN FORK -->
+        <div class="project-row fade-in" id="golden-fork" data-type="web">
+          <div class="project-emoji">🍽️</div>
+          <div class="project-body">
+            <div class="project-title">
+              Золотая Вилка
+              <span class="project-type">Веб-сайт</span>
+            </div>
+            <p class="project-desc">
+              Многостраничный сайт ресторана в стиле 1950-х: главная, меню, афиша, дресс-код, история, контакты, бронирование стола. Адаптивный бургер, IntersectionObserver анимации, валидация формы. Палитра — тёмный фон, золото, бордо.
+            </p>
+            <div class="project-tags">
+              <span class="tag html">HTML5</span>
+              <span class="tag html">CSS3</span>
+              <span class="tag js">Vanilla JS</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/T3trix-hub/golden-fork" target="_blank" class="action-link action-github">
+              <svg class="action-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <p class="no-live">нет деплоя</p>
+          </div>
+        </div>
+
+        <!-- ZERNO -->
+        <div class="project-row fade-in" id="zerno" data-type="web">
+          <div class="project-emoji">📷</div>
+          <div class="project-body">
+            <div class="project-title">
+              ЗЕРНО
+              <span class="project-type">Веб-сайт</span>
+            </div>
+            <p class="project-desc">
+              Сайт-визитка для проката плёночных камер в Москве. Каталог камер, форма заявки с валидацией Gmail и автоотправкой через mailto, светлая/тёмная тема, RU/EN локализация через data-i18n атрибуты. Шрифты: Fraunces, Inter, IBM Plex Mono.
+            </p>
+            <div class="project-tags">
+              <span class="tag html">HTML</span>
+              <span class="tag html">CSS</span>
+              <span class="tag js">Vanilla JS</span>
+              <span class="tag">i18n</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/T3trix-hub/zerno" target="_blank" class="action-link action-github">
+              <svg class="action-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <p class="no-live">нет деплоя</p>
+          </div>
+        </div>
+
+        <!-- FC GYMNASIUM -->
+        <div class="project-row fade-in" id="fc" data-type="web">
+          <div class="project-emoji">⚽</div>
+          <div class="project-body">
+            <div class="project-title">
+              FC Gymnasium
+              <span class="project-type">Веб-сайт</span>
+            </div>
+            <p class="project-desc">
+              Сайт для школьной футбольной сборной: таблица турнира и статистика игроков. Администраторы могут редактировать данные в реальном времени. Один HTML-файл, чистый vanilla стек, MIT лицензия.
+            </p>
+            <div class="project-tags">
+              <span class="tag html">HTML</span>
+              <span class="tag html">CSS</span>
+              <span class="tag js">Vanilla JS</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/T3trix-hub/fc-gymnasium" target="_blank" class="action-link action-github">
+              <svg class="action-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <p class="no-live">нет деплоя</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 T3trix-hub / Алексей</p>
+  <div style="display:flex;gap:1.25rem;">
+    <a href="https://github.com/T3trix-hub" target="_blank">GitHub</a>
+    <a href="contact.html">Контакты</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+  // filter
+  const btns = document.querySelectorAll('.filter-btn');
+  const rows = document.querySelectorAll('.project-row');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      rows.forEach(r => {
+        r.style.display = (f === 'all' || r.dataset.type === f) ? 'grid' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>

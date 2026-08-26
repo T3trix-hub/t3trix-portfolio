@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Обо мне — T3trix</title>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="favicon-180.png" />
+  <link rel="apple-touch-icon" href="favicon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-hero {
+      padding: 5rem 0 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+      font-size: 0.9375rem;
+    }
+
+    .about-text p strong { color: var(--text); }
+
+    /* timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 0 1.25rem;
+      padding-bottom: 1.75rem;
+      position: relative;
+    }
+
+    .tl-item:last-child { padding-bottom: 0; }
+
+    .tl-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 0.35rem;
+      justify-self: center;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+
+    .tl-item:not(:last-child) .tl-dot::after {
+      content: '';
+      position: absolute;
+      top: 100%; left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: calc(100% + 1.75rem - 10px);
+      background: var(--border);
+    }
+
+    .tl-body {}
+    .tl-date {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.2rem;
+    }
+    .tl-title { font-weight: 600; margin-bottom: 0.3rem; }
+    .tl-desc { font-size: 0.8125rem; color: var(--muted); line-height: 1.6; }
+
+    /* values */
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .value-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+
+    .value-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .value-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .value-text { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+    /* full stack table */
+    .stack-section { margin-top: 4rem; }
+
+    .stack-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .stack-cat {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+
+    .stack-cat-title {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.875rem;
+    }
+
+    .stack-cat ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .stack-cat li {
+      font-size: 0.875rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .stack-cat li::before {
+      content: '▸';
+      color: var(--accent);
+      font-size: 0.7rem;
+    }
+
+    @media (max-width: 800px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    @media (max-width: 560px) {
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">T3<span>trix</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="projects.html">Проекты</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="contact.html">Контакты</a></li>
+  </ul>
+  <div class="nav-burger"><span></span><span></span><span></span></div>
+</nav>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Кто я</span>
+      <h1>Обо мне</h1>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-text fade-in">
+          <p>
+            Привет. Я <strong>Алексей</strong>, разработчик который делает веб-сайты, приложения и Telegram-ботов. Работаю преимущественно на <strong>Python</strong> и <strong>Vanilla JavaScript</strong> — без тонн зависимостей, без магии фреймворков.
+          </p>
+          <p>
+            Мне интересно когда решение технически чистое: структура файлов понятна, алгоритм работает правильно, интерфейс не требует объяснений. Поэтому большинство фронтенд-проектов — без npm install вообще.
+          </p>
+          <p>
+            В Telegram-ботах люблю полноценную архитектуру: FSM, middleware, отдельные handlers — как в barbershop-bot. Во фронтенде — Canvas API вместо Chart.js, SVG вместо Leaflet, LocalStorage как замена бэкенду для демо.
+          </p>
+          <p>
+            Открыт к заказам и интересным задачам. Если нужен сайт, бот или интерактивный инструмент — пишите.
+          </p>
+
+          <div class="values-grid">
+            <div class="value-card fade-in">
+              <div class="value-icon">⚙️</div>
+              <div class="value-title">Минимум зависимостей</div>
+              <div class="value-text">Если можно без библиотеки — делаю без неё.</div>
+            </div>
+            <div class="value-card fade-in">
+              <div class="value-icon">🏗️</div>
+              <div class="value-title">Чистая структура</div>
+              <div class="value-text">Код разбит по слоям, handlers отдельно от логики.</div>
+            </div>
+            <div class="value-card fade-in">
+              <div class="value-icon">📱</div>
+              <div class="value-title">Адаптив всегда</div>
+              <div class="value-text">Мобильная верстка не опциональна.</div>
+            </div>
+            <div class="value-card fade-in">
+              <div class="value-icon">🌐</div>
+              <div class="value-title">i18n как привычка</div>
+              <div class="value-text">RU/EN/ZH — не проблема, уже делал.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-in">
+          <span class="eyebrow">Путь</span>
+          <h3 style="margin-bottom:1.5rem">Что строил</h3>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-body">
+                <div class="tl-date">2026 — СЕЙЧАС</div>
+                <div class="tl-title">Telegram Mini Apps + FastAPI</div>
+                <div class="tl-desc">split — сплит расходов с WebApp-интерфейсом, верификация initData, жадный алгоритм закрытия долгов.</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-body">
+                <div class="tl-date">2026</div>
+                <div class="tl-title">BizCRM — CRM без фреймворков</div>
+                <div class="tl-desc">Kanban drag-and-drop, Canvas API, полноценный LocalStorage как база данных для демо.</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-body">
+                <div class="tl-date">2026</div>
+                <div class="tl-title">Боты на aiogram 3</div>
+                <div class="tl-desc">Barbershop-bot: FSM, middleware, keyboards.py, handlers/. Продакшен-архитектура.</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-body">
+                <div class="tl-date">2025–2026</div>
+                <div class="tl-title">Vanilla JS сайты</div>
+                <div class="tl-desc">Bel-Interact (SVG-карта, 200+ объектов), Зерно (прокат камер), Золотая Вилка (ресторан), FC Gymnasium.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL STACK -->
+  <section class="stack-section" style="border-top: 1px solid var(--border);">
+    <div class="container">
+      <span class="eyebrow fade-in">Технологии</span>
+      <h2 class="fade-in" style="margin-bottom:1.75rem">Полный стек</h2>
+      <div class="stack-categories">
+        <div class="stack-cat fade-in">
+          <div class="stack-cat-title">Frontend</div>
+          <ul>
+            <li>HTML5 / CSS3</li>
+            <li>Vanilla JavaScript</li>
+            <li>CSS Grid + Flexbox</li>
+            <li>Canvas API</li>
+            <li>SVG-анимации</li>
+            <li>IntersectionObserver</li>
+          </ul>
+        </div>
+        <div class="stack-cat fade-in">
+          <div class="stack-cat-title">Backend</div>
+          <ul>
+            <li>Python 3.10+</li>
+            <li>FastAPI</li>
+            <li>SQLModel / SQLite</li>
+            <li>python-dotenv</li>
+            <li>uvicorn</li>
+          </ul>
+        </div>
+        <div class="stack-cat fade-in">
+          <div class="stack-cat-title">Telegram</div>
+          <ul>
+            <li>aiogram 3.x</li>
+            <li>FSM (Finite State Machine)</li>
+            <li>WebApp SDK</li>
+            <li>initData verification</li>
+            <li>Inline keyboards</li>
+          </ul>
+        </div>
+        <div class="stack-cat fade-in">
+          <div class="stack-cat-title">Другое</div>
+          <ul>
+            <li>LocalStorage как БД</li>
+            <li>i18n (RU / EN / ZH)</li>
+            <li>GitHub Pages деплой</li>
+            <li>Drag-and-drop API</li>
+            <li>mailto: автоматизация</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 T3trix-hub / Алексей</p>
+  <div style="display:flex;gap:1.25rem;">
+    <a href="https://github.com/T3trix-hub" target="_blank">GitHub</a>
+    <a href="contact.html">Контакты</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
