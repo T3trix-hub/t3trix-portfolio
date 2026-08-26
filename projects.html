@@ -51,7 +51,7 @@
       border-radius: var(--radius);
       padding: 2rem;
       display: grid;
-      grid-template-columns: 3.5rem 1fr auto;
+      grid-template-columns: 1fr auto;
       gap: 1.25rem 1.5rem;
       align-items: start;
       transition: border-color var(--transition), box-shadow var(--transition);
@@ -62,11 +62,7 @@
       box-shadow: 0 8px 32px rgba(124,107,255,0.08);
     }
 
-    .project-emoji {
-      font-size: 2.25rem;
-      line-height: 1;
-      padding-top: 0.1rem;
-    }
+    .project-emoji { display: none; }
 
     .project-body {}
 
@@ -79,16 +75,7 @@
       gap: 0.6rem;
     }
 
-    .project-type {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      padding: 2px 7px;
-      border-radius: 4px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
+    .project-type { display: none; }
 
     .project-desc {
       font-size: 0.9rem;
@@ -158,21 +145,13 @@
     }
 
     @media (max-width: 700px) {
-      .project-row {
-        grid-template-columns: 2.5rem 1fr;
-      }
+      .project-row { grid-template-columns: 1fr; }
       .project-actions {
-        grid-column: 1 / -1;
         flex-direction: row;
         flex-wrap: wrap;
         min-width: unset;
       }
       .action-link { flex: 1; }
-    }
-
-    @media (max-width: 480px) {
-      .project-row { grid-template-columns: 1fr; }
-      .project-emoji { display: none; }
     }
   </style>
 </head>
