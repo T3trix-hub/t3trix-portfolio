@@ -35,9 +35,9 @@
         <div class="project-tags">${tags(p)}</div>
       </div>
       <div class="project-actions">
-        ${live ? `<a href="${live}" target="_blank" rel="noopener" class="action-link action-live">${icon(LIVE, true)} Live</a>` : ''}
-        ${repo ? `<a href="${repo}" target="_blank" rel="noopener" class="action-link action-github">${icon(GH)} GitHub</a>` : ''}
-        ${tg ? `<a href="${tg}" target="_blank" rel="noopener" class="action-link action-tg">${icon(TG)} Telegram</a>` : ''}
+        ${live ? `<a href="${live}" target="_blank" rel="noopener" class="action-link action-live">${icon(LIVE, true)} Открыть</a>` : ''}
+        ${repo ? `<a href="${repo}" target="_blank" rel="noopener" class="action-link action-github">${icon(GH)} Исходный код</a>` : ''}
+        ${tg ? `<a href="${tg}" target="_blank" rel="noopener" class="action-link action-tg">${icon(TG)} Открыть бота</a>` : ''}
       </div></div>`;
   }
 
@@ -49,16 +49,16 @@
       <div class="proj-desc">${esc(short(p))}</div>
       <div class="proj-tags">${tags(p, 3)}</div>
       ${repo ? `<div class="proj-footer"><a href="${repo}" target="_blank" rel="noopener" class="proj-link">
-        <svg fill="currentColor" viewBox="0 0 24 24"><path d="${GH}"/></svg> GitHub</a></div>` : ''}
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="${GH}"/></svg> Исходный код</a></div>` : ''}
     </div>`;
   }
 
   const live = P.filter(p => p.live).length;
   document.querySelectorAll('[data-stat="projects"]').forEach(e => e.textContent = P.length);
-  document.querySelectorAll('[data-stat-label="projects"]').forEach(e => e.textContent = plural(P.length, 'Проект', 'Проекта', 'Проектов'));
+  document.querySelectorAll('[data-stat-label="projects"]').forEach(e => e.textContent = plural(P.length, 'Готовый проект', 'Готовых проекта', 'Готовых проектов'));
   document.querySelectorAll('[data-stat="live"]').forEach(e => e.textContent = live);
   const cnt = document.getElementById('projects-count');
-  if (cnt) cnt.textContent = `${P.length} ${plural(P.length, 'проект', 'проекта', 'проектов')} — всё на ванильном стеке, без лишних зависимостей.`;
+  if (cnt) cnt.textContent = `${P.length} ${plural(P.length, 'проект', 'проекта', 'проектов')} — ${live === P.length ? 'каждый можно открыть и попробовать' : 'часть можно открыть и попробовать'}.`;
 
   const grid = document.getElementById('featured-grid');
   if (grid) {
