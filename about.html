@@ -153,6 +153,23 @@
     @media (max-width: 560px) {
       .values-grid { grid-template-columns: 1fr; }
     }
+
+    /* ── client-friendly blocks ── */
+    .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
+    .svc-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
+    .svc-card .svc-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .svc-card h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    .svc-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 1.5rem; counter-reset: step; }
+    .step { border-top: 2px solid var(--accent); padding-top: 1rem; }
+    .step::before { counter-increment: step; content: "0" counter(step); font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); }
+    .step h4 { margin: 0.35rem 0; font-size: 0.95rem; }
+    .step p { font-size: 0.8125rem; color: var(--muted); line-height: 1.6; }
+    .cta-band { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.25rem 2rem; text-align: center; }
+    .cta-band h2 { margin-bottom: 0.5rem; }
+    .cta-band p { color: var(--muted); margin: 0 auto 1.25rem; max-width: 480px; line-height: 1.7; }
+    @media (max-width: 800px) { .svc-grid { grid-template-columns: 1fr; } .steps { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .steps { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -182,38 +199,38 @@
 
         <div class="about-text fade-in">
           <p>
-            Привет. Я <strong>Алексей</strong>, разработчик который делает веб-сайты, приложения и Telegram-ботов. Работаю преимущественно на <strong>Python</strong> и <strong>Vanilla JavaScript</strong> — без тонн зависимостей, без магии фреймворков.
+            Привет. Я <strong>Алексей</strong>, разработчик который делает веб-сайты, приложения и Telegram-ботов. Работаю на <strong>Python</strong> и <strong>JavaScript</strong>, без лишних библиотек и тяжёлых фреймворков.
           </p>
           <p>
-            Мне интересно когда решение технически чистое: структура файлов понятна, алгоритм работает правильно, интерфейс не требует объяснений. Поэтому большинство фронтенд-проектов — без npm install вообще.
+            Мне важно, чтобы результат был понятным: сайт быстро открывается, интерфейс не требует объяснений, а код устроен так, чтобы его можно было развивать дальше.
           </p>
           <p>
-            В Telegram-ботах люблю полноценную архитектуру: FSM, middleware, отдельные handlers — как в barbershop-bot. Во фронтенде — Canvas API вместо Chart.js, SVG вместо Leaflet, LocalStorage как замена бэкенду для демо.
+            Telegram-ботов делаю «по-взрослому»: с диалогами, админ-панелью и базой данных. Сайты и приложения — без лишних зависимостей, поэтому они быстрее грузятся и проще в поддержке.
           </p>
           <p>
-            Открыт к заказам и интересным задачам. Если нужен сайт, бот или интерактивный инструмент — пишите.
+            Открыт к заказам и интересным задачам. Если нужен сайт, бот или интерактивный инструмент — напишите, обсудим.
           </p>
 
           <div class="values-grid">
             <div class="value-card fade-in">
               <div class="value-icon">⚙️</div>
               <div class="value-title">Минимум зависимостей</div>
-              <div class="value-text">Если можно без библиотеки — делаю без неё.</div>
+              <div class="value-text">Если можно без лишней библиотеки — делаю без неё: быстрее загрузка, проще поддержка.</div>
             </div>
             <div class="value-card fade-in">
               <div class="value-icon">🏗️</div>
               <div class="value-title">Чистая структура</div>
-              <div class="value-text">Код разбит по слоям, handlers отдельно от логики.</div>
+              <div class="value-text">Код разложен по частям — его легко читать и дополнять.</div>
             </div>
             <div class="value-card fade-in">
               <div class="value-icon">📱</div>
               <div class="value-title">Адаптив всегда</div>
-              <div class="value-text">Мобильная верстка не опциональна.</div>
+              <div class="value-text">Всё должно удобно открываться и на телефоне.</div>
             </div>
             <div class="value-card fade-in">
               <div class="value-icon">🌐</div>
-              <div class="value-title">i18n как привычка</div>
-              <div class="value-text">RU/EN/ZH — не проблема, уже делал.</div>
+              <div class="value-title">Несколько языков</div>
+              <div class="value-text">Русский, английский, китайский — уже делал.</div>
             </div>
           </div>
         </div>
@@ -225,33 +242,17 @@
             <div class="tl-item">
               <div class="tl-dot"></div>
               <div class="tl-body">
-                <div class="tl-date">2026 — СЕЙЧАС</div>
-                <div class="tl-title">Telegram Mini Apps + FastAPI</div>
-                <div class="tl-desc">split — сплит расходов с WebApp-интерфейсом, верификация initData, жадный алгоритм закрытия долгов.</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-body">
                 <div class="tl-date">2026</div>
-                <div class="tl-title">BizCRM — CRM без фреймворков</div>
-                <div class="tl-desc">Kanban drag-and-drop, Canvas API, полноценный LocalStorage как база данных для демо.</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-body">
-                <div class="tl-date">2026</div>
-                <div class="tl-title">Боты на aiogram 3</div>
-                <div class="tl-desc">Barbershop-bot: FSM, middleware, keyboards.py, handlers/. Продакшен-архитектура.</div>
+                <div class="tl-title">BizCRM — система учёта клиентов</div>
+                <div class="tl-desc">Доска сделок с перетаскиванием карточек, графики и аналитика, данные хранятся прямо в браузере.</div>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot"></div>
               <div class="tl-body">
                 <div class="tl-date">2025–2026</div>
-                <div class="tl-title">Vanilla JS сайты</div>
-                <div class="tl-desc">Bel-Interact (SVG-карта, 200+ объектов), Зерно (прокат камер), Золотая Вилка (ресторан), FC Gymnasium.</div>
+                <div class="tl-title">Сайты и карты</div>
+                <div class="tl-desc">Bel-Interact — интерактивная карта Беларуси с 200+ объектами, FC Gymnasium — сайт футбольной команды.</div>
               </div>
             </div>
           </div>
@@ -265,7 +266,7 @@
   <section class="stack-section" style="border-top: 1px solid var(--border);">
     <div class="container">
       <span class="eyebrow fade-in">Технологии</span>
-      <h2 class="fade-in" style="margin-bottom:1.75rem">Полный стек</h2>
+      <h2 class="fade-in" style="margin-bottom:1.75rem">Чем пользуюсь</h2>
       <div class="stack-categories">
         <div class="stack-cat fade-in">
           <div class="stack-cat-title">Frontend</div>
@@ -308,6 +309,16 @@
             <li>mailto: автоматизация</li>
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta-band fade-in">
+        <h2>Есть идея или задача?</h2>
+        <p>Опишите её в паре предложений — подскажу, как это можно сделать, и сколько это займёт.</p>
+        <a href="contact.html" class="btn btn-primary">Связаться</a>
       </div>
     </div>
   </section>
