@@ -28,15 +28,6 @@ portfolio/
 ├── favicon.ico      # 16/32/48/64px
 └── favicon-180.png  # apple-touch-icon
 ```
-
-## Проекты внутри
-
-| Проект | Тип | Стек |
-|---|---|---|
-| [BizCRM](https://github.com/T3trix-hub/bizCRM) | Web App | Vanilla JS, Canvas API |
-| [Bel-Interact](https://github.com/T3trix-hub/Bel-Interact) | Веб-сайт | Vanilla JS, SVG |
-| [FC Gymnasium](https://github.com/T3trix-hub/fc-gymnasium) | Веб-сайт | HTML, CSS, JS |
-
 ## Деплой на GitHub Pages
 
 ```bash
