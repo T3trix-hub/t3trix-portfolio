@@ -33,12 +33,8 @@ portfolio/
 
 | Проект | Тип | Стек |
 |---|---|---|
-| [Скинулись](https://github.com/T3trix-hub/split) | TG Mini App | Python, FastAPI, aiogram 3, WebApp |
 | [BizCRM](https://github.com/T3trix-hub/bizCRM) | Web App | Vanilla JS, Canvas API |
 | [Bel-Interact](https://github.com/T3trix-hub/Bel-Interact) | Веб-сайт | Vanilla JS, SVG |
-| [Barbershop-bot](https://github.com/T3trix-hub/barbershop-bot) | TG Bot | Python, aiogram 3, FSM |
-| [Золотая Вилка](https://github.com/T3trix-hub/golden-fork) | Веб-сайт | HTML, CSS, JS |
-| [ЗЕРНО](https://github.com/T3trix-hub/zerno) | Веб-сайт | HTML, CSS, JS, i18n |
 | [FC Gymnasium](https://github.com/T3trix-hub/fc-gymnasium) | Веб-сайт | HTML, CSS, JS |
 
 ## Деплой на GitHub Pages
