@@ -280,6 +280,23 @@
       .featured-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* ── client-friendly blocks ── */
+    .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
+    .svc-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
+    .svc-card .svc-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .svc-card h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    .svc-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 1.5rem; counter-reset: step; }
+    .step { border-top: 2px solid var(--accent); padding-top: 1rem; }
+    .step::before { counter-increment: step; content: "0" counter(step); font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); }
+    .step h4 { margin: 0.35rem 0; font-size: 0.95rem; }
+    .step p { font-size: 0.8125rem; color: var(--muted); line-height: 1.6; }
+    .cta-band { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.25rem 2rem; text-align: center; }
+    .cta-band h2 { margin-bottom: 0.5rem; }
+    .cta-band p { color: var(--muted); margin: 0 auto 1.25rem; max-width: 480px; line-height: 1.7; }
+    @media (max-width: 800px) { .svc-grid { grid-template-columns: 1fr; } .steps { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .steps { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -303,18 +320,15 @@
     <div class="container">
       <div class="hero-inner">
         <div>
-          <p class="hero-label">Full-Stack Developer</p>
+          <p class="hero-label">Сайты · приложения · Telegram-боты</p>
           <h1>Привет,<br>я <span class="gradient-text">Алексей</span></h1>
           <p class="hero-desc">
-            Строю веб-приложения, Telegram-ботов и интерактивные интерфейсы.
-            Ванильный JS, Python, aiogram — без лишнего шума.
+            Делаю сайты, веб-приложения и Telegram-ботов для бизнеса и личных проектов.
+            Работают на телефоне и компьютере, без лишних сложностей.
           </p>
           <div class="hero-actions">
-            <a href="projects.html" class="btn btn-primary">
-              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
-              Посмотреть работы
-            </a>
-            <a href="contact.html" class="btn btn-ghost">Связаться</a>
+            <a href="contact.html" class="btn btn-primary">Обсудить проект</a>
+            <a href="projects.html" class="btn btn-ghost">Смотреть работы</a>
           </div>
         </div>
 
@@ -350,31 +364,47 @@
       <div class="stats-grid">
         <div class="stat-item fade-in">
           <div class="stat-num" data-stat="projects">3</div>
-          <div class="stat-label" data-stat-label="projects">Проекта</div>
-        </div>
-        <div class="stat-item fade-in">
-          <div class="stat-num">3</div>
-          <div class="stat-label">Языка</div>
+          <div class="stat-label" data-stat-label="projects">Готовых проекта</div>
         </div>
         <div class="stat-item fade-in">
           <div class="stat-num" data-stat="live">3</div>
-          <div class="stat-label">Live-демо</div>
+          <div class="stat-label">Демо онлайн</div>
         </div>
         <div class="stat-item fade-in">
-          <div class="stat-num">0</div>
-          <div class="stat-label">Фреймворков*</div>
+          <div class="stat-num">3</div>
+          <div class="stat-label">Языка интерфейса</div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Удобно с телефона</div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- SERVICES -->
+  <section>
+    <div class="container">
+      <span class="eyebrow fade-in">Чем могу помочь</span>
+      <h2 class="fade-in">Что я делаю</h2>
+      <div class="svc-grid">
+        <div class="svc-card fade-in"><div class="svc-icon">🌐</div><h3>Сайты</h3>
+          <p>Сайты-визитки, лендинги и многостраничные сайты. Адаптивные, быстро открываются, могут быть на нескольких языках.</p></div>
+        <div class="svc-card fade-in"><div class="svc-icon">🧩</div><h3>Веб-приложения</h3>
+          <p>Системы учёта и CRM, калькуляторы, интерактивные карты — всё, что удобно делать прямо в браузере.</p></div>
+        <div class="svc-card fade-in"><div class="svc-icon">🤖</div><h3>Telegram-боты</h3>
+          <p>Запись клиентов, приём заявок, расчёты и мини-приложения внутри Telegram.</p></div>
+      </div>
+    </div>
+  </section>
 
   <!-- FEATURED -->
   <section>
     <div class="container">
       <div class="section-header fade-in">
         <div>
-          <span class="eyebrow">Избранное</span>
-          <h2>Топ проекты</h2>
+          <span class="eyebrow">Примеры работ</span>
+          <h2>Что я уже сделал</h2>
         </div>
         <a href="projects.html" class="btn btn-ghost">Все проекты →</a>
       </div>
@@ -383,11 +413,35 @@
     </div>
   </section>
 
+  <!-- PROCESS -->
+  <section style="padding-top:0">
+    <div class="container">
+      <span class="eyebrow fade-in">Как это работает</span>
+      <h2 class="fade-in">От идеи до запуска</h2>
+      <div class="steps">
+        <div class="step fade-in"><h4>Вы описываете задачу</h4><p>Напишите в Telegram или на почту: что нужно сделать и для чего.</p></div>
+        <div class="step fade-in"><h4>Обсуждаем детали</h4><p>Уточняю, что именно нужно, и называю сроки и стоимость.</p></div>
+        <div class="step fade-in"><h4>Делаю и показываю</h4><p>Показываю промежуточный результат и вношу правки.</p></div>
+        <div class="step fade-in"><h4>Запуск</h4><p>Публикую сайт или запускаю бота и объясняю, как им пользоваться.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="cta-band fade-in">
+        <h2>Есть идея или задача?</h2>
+        <p>Опишите её в паре предложений — подскажу, как это можно сделать, и сколько это займёт.</p>
+        <a href="contact.html" class="btn btn-primary">Связаться</a>
+      </div>
+    </div>
+  </section>
+
   <!-- STACK TEASER -->
   <section style="padding-top:0">
     <div class="container">
-      <span class="eyebrow fade-in">Инструменты</span>
-      <h2 class="fade-in" style="margin-bottom:1.5rem">Стек</h2>
+      <span class="eyebrow fade-in">Технологии</span>
+      <h2 class="fade-in" style="margin-bottom:1.5rem">На чём я работаю</h2>
       <div class="stack-grid">
         <div class="stack-item fade-in"><span class="stack-icon">🐍</span> Python</div>
         <div class="stack-item fade-in"><span class="stack-icon">⚡</span> FastAPI</div>
@@ -398,7 +452,7 @@
         <div class="stack-item fade-in"><span class="stack-icon">✈️</span> TG WebApp</div>
         <div class="stack-item fade-in"><span class="stack-icon">🎨</span> Canvas API</div>
       </div>
-      <p style="margin-top:1rem;font-size:0.75rem;color:var(--muted);font-family:var(--font-mono);">* большинство frontend-проектов без npm</p>
+      <p style="margin-top:1rem;font-size:0.8125rem;color:var(--muted);">Технологии подбираю под задачу — если вам это не важно, можно просто пропустить этот блок.</p>
     </div>
   </section>
 </main>
