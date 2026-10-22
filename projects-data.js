@@ -52,5 +52,22 @@ window.PROJECTS = [
     "repo": "https://github.com/T3trix-hub/fc-gymnasium",
     "live": "https://t3trix-hub.github.io/fc-gymnasium/",
     "tg": ""
+  },
+  {
+    "id": "project-1792698039607",
+    "title": "БІЗОН — шаурмечная",
+    "emoji": "🚀",
+    "type": "web",
+    "featured": true,
+    "short": "",
+    "desc": "Сайт шаурмечной в Минске: меню с фото и ценами на 50 позиций, контакты, карта, светлая и тёмная тема, удобно с телефона. Фото блюд добавляются простым копированием файла в папку.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "repo": "",
+    "live": "https://t3trix-hub.github.io/bizon-shawarma/index.html",
+    "tg": ""
   }
 ];
