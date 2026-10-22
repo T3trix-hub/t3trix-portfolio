@@ -9,7 +9,9 @@ window.PROJECTS = [
     "short": "",
     "desc": "Многостраничный сайт шаурмечной БІЗОН (Минск): меню с фото, контакты, карта, светлая и тёмная тема. Чистые HTML, CSS и JS без сборки.",
     "tags": [
-      "HTML"
+      "HTML",
+      "CSS",
+      "Vanilla JS"
     ],
     "repo": "https://github.com/T3trix-hub/bizon-shawarma",
     "live": "https://t3trix-hub.github.io/bizon-shawarma/",
