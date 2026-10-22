@@ -1,24 +1,6 @@
 // Список проектов портфолио. Файл генерируется страницей admin.html — руками можно не править.
 window.PROJECTS = [
   {
-    "id": "bizcrm",
-    "title": "BizCRM",
-    "emoji": "📊",
-    "type": "app",
-    "featured": true,
-    "short": "Система учёта клиентов и сделок для малого бизнеса: воронка продаж, задачи, календарь, графики.",
-    "desc": "Система для малого бизнеса: учёт клиентов, сделки на доске (карточки перетаскиваются между этапами), задачи, календарь и аналитика на графиках. Тёмная и светлая тема, русский и английский, удобно с телефона. Данные хранятся в браузере — ничего устанавливать не нужно.",
-    "tags": [
-      "Vanilla JS",
-      "Canvas API",
-      "CSS Grid",
-      "LocalStorage"
-    ],
-    "repo": "https://github.com/T3trix-hub/bizCRM",
-    "live": "https://t3trix-hub.github.io/bizCRM/",
-    "tg": ""
-  },
-  {
     "id": "bel",
     "title": "Bel-Interact",
     "emoji": "🗺️",
@@ -54,20 +36,18 @@ window.PROJECTS = [
     "tg": ""
   },
   {
-    "id": "project-1792698039607",
-    "title": "БІЗОН — шаурмечная",
+    "id": "bizon-shawarma",
+    "title": "bizon-shawarma",
     "emoji": "🚀",
     "type": "web",
     "featured": true,
     "short": "",
-    "desc": "Сайт шаурмечной в Минске: меню с фото и ценами на 50 позиций, контакты, карта, светлая и тёмная тема, удобно с телефона. Фото блюд добавляются простым копированием файла в папку.",
+    "desc": "Многостраничный сайт шаурмечной БІЗОН (Минск): меню с фото, контакты, карта, светлая и тёмная тема. Чистые HTML, CSS и JS без сборки.",
     "tags": [
-      "HTML",
-      "CSS",
-      "JS"
+      "HTML"
     ],
-    "repo": "",
-    "live": "https://t3trix-hub.github.io/bizon-shawarma/index.html",
+    "repo": "https://github.com/T3trix-hub/bizon-shawarma",
+    "live": "https://t3trix-hub.github.io/bizon-shawarma/",
     "tg": ""
   }
 ];
