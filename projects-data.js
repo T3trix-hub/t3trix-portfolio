@@ -1,6 +1,21 @@
 // Список проектов портфолио. Файл генерируется страницей admin.html — руками можно не править.
 window.PROJECTS = [
   {
+    "id": "bizon-shawarma",
+    "title": "bizon-shawarma",
+    "emoji": "🚀",
+    "type": "web",
+    "featured": true,
+    "short": "",
+    "desc": "Многостраничный сайт шаурмечной БІЗОН (Минск): меню с фото, контакты, карта, светлая и тёмная тема. Чистые HTML, CSS и JS без сборки.",
+    "tags": [
+      "HTML"
+    ],
+    "repo": "https://github.com/T3trix-hub/bizon-shawarma",
+    "live": "https://t3trix-hub.github.io/bizon-shawarma/",
+    "tg": ""
+  },
+  {
     "id": "bel",
     "title": "Bel-Interact",
     "emoji": "🗺️",
@@ -33,21 +48,6 @@ window.PROJECTS = [
     ],
     "repo": "https://github.com/T3trix-hub/fc-gymnasium",
     "live": "https://t3trix-hub.github.io/fc-gymnasium/",
-    "tg": ""
-  },
-  {
-    "id": "bizon-shawarma",
-    "title": "bizon-shawarma",
-    "emoji": "🚀",
-    "type": "web",
-    "featured": true,
-    "short": "",
-    "desc": "Многостраничный сайт шаурмечной БІЗОН (Минск): меню с фото, контакты, карта, светлая и тёмная тема. Чистые HTML, CSS и JS без сборки.",
-    "tags": [
-      "HTML"
-    ],
-    "repo": "https://github.com/T3trix-hub/bizon-shawarma",
-    "live": "https://t3trix-hub.github.io/bizon-shawarma/",
     "tg": ""
   }
 ];
